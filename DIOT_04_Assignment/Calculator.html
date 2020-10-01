@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <title>Working with Events</title>
+        <script>
+            function callMe(){
+                alert("The Button was clicked")
+            }
+        </script>
+        <style>
+            *{
+                background-color: lemonchiffon;
+            }
+            button{
+                font-size: 14pt;
+                width: 200px;
+                height: 50px;
+                background-color:yellowgreen;
+            }
+            div{
+                border: 5px dotted forestgreen;
+                display: inline-block;
+                width: 45%;
+                padding: 5px;
+                margin:35px;
+            }
+        </style>    
+        <script>
+            let selectedList = "";
+            function getValue(list){
+                const value = list.value;
+                selectedList = value;
+            }
+            function setReset(){
+                document.getElementById("Num1").value = "";
+                document.getElementById("Num2").value = "";
+                document.getElementById("spDisplay").value ="";
+            }
+
+            function displayResult(){
+                let v1 = parseFloat(document.getElementById("Num1").value);
+               
+                let v2 = parseFloat(document.getElementById("Num2").value);
+               
+                let operand = selectedList;
+                let result = 0.0;
+                switch(operand){
+                    case "add":
+                        result = v1 + v2; 
+                        break;
+                    case "subtract":
+                        result = v1  -v2;
+                        break;
+                    case "multiply":
+                        result = v1 * v2;
+                        break;
+                    case "divide":
+                        result = v1 /v2;    
+                        break;
+                }
+                let sp = document.getElementById("spDisplay");
+                sp.innerText = result;
+            }
+        </script>        
+    </head>
+    <body>
+    <center>
+        <div>
+            <h1>My Custom math Calculator</h1>
+            <p><input type="number" id="Num1" placeholder="Enter the First Value"></p>
+            <p><input type="number" id="Num2" placeholder="Enter the Second Value"></p>
+           <p>
+            <label for="List">Operation : </label>
+            <select id="List">
+                <option>---Select one-----</option>
+                <option type="list" onclick="getValue(this)" name="operand" value="add">Addition</option>
+                <option type="list" onclick="getValue(this)" name="operand" value="subtract">Subtraction</option>
+                <option type="list" onclick="getValue(this)" name="operand" value="multiply">Multiplication</option>
+                <option type="list" onclick="getValue(this)" name="operand" value="divide">Division</option>
+            </select>
+            </p>
+            <p><button onclick="displayResult()">Get Value</button></p>
+            <p>The Result : <span id="spDisplay">0</span></p>          
+            <p><button onclick="setReset()">Reset</button></p>
+        </div>
+    </center>
+    </body>
+</html>

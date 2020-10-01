@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLAYERS</title>
+    <style>
+        button{
+            margin:15px;
+        }
+    </style>
+    <script>
+        let allPlayers = [];//Creates a blank array......
+        function onAddPlayer(){
+            //take the value entered by the user in the txtbox...
+            const value = document.getElementById('txtPlayer').value;
+            allPlayers.push(value);
+            alert("Player added to UR Fav list!!!!");
+            document.getElementById("txtPlayer").value = "";//make it blank...
+
+        }
+     
+
+        function display(){
+            //get the reference of the ordered list
+            let lst = document.getElementById("lstPlayers");
+            lst.innerHTML = "";
+            //iterate thro all the players in the array..
+            for(let index = 0; index < allPlayers.length;index++){
+                
+                //add each item into the list
+                lst.innerHTML += '<li>' + allPlayers[index] + '<button>X</button></li>'
+            }
+
+        function setDelete(){
+            //let l=document.getElementById("lstPlayers")
+            const del= document.getElementById('txtPlayers').value;
+            allPlayers.pop(del);
+            alert("player removed");
+            document.getElementById("remPlayers").value ="";
+          // allPlayers.pop(v);
+
+        }
+       
+        } 
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Favourite Cricketers</h1>
+    </div>
+    <div>
+        <h1>Please enter:</h1>
+        <input type="text" id="txtPlayer" placeholder="Cricketer Name?">
+        <button onclick="onAddPlayer()">Add Player</button>
+    </div>
+    <hr>
+    <div>
+        <h1>Player List</h1>
+        <button onclick="display()">View players list</button>
+        <ol id="lstPlayers">
+
+        </ol>
+    </div>
+    <div>
+        <h1>name to be removed</h1>
+        <input type="text" id="remPlayers" placeholder="enter name">
+        <button onclick="setDelete()">Delete player</button>
+    </div> 
+   
+</body>
+</html>
